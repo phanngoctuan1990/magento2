@@ -4,7 +4,12 @@ namespace SimplifiedMagento\FirstModule\NotMagento;
 
 class YellowPencil implements PencilInterface
 {
-    public function getPencilType()
+    /**
+     * Get pencil type
+     * 
+     * @return string
+     */
+    public function getPencilType() :string
     {
         return "Yellow pencil";
     }

@@ -2,12 +2,15 @@
 
 namespace SimplifiedMagento\FirstModule\NotMagento;
 
-interface PencilInterface
+class BigPencil implements PencilInterface
 {
     /**
      * Get pencil type
      * 
      * @return string
      */
-    public function getPencilType() :string;
-} 
+    public function getPencilType() :string
+    {
+        return "Big pencil";
+    }
+}
