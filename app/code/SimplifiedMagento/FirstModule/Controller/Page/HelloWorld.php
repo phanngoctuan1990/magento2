@@ -42,13 +42,13 @@ class HelloWorld extends Action
     public function execute()
     {
         // echo get_class($this->productRepository);
-        // echo $this->pencilInterface->getPencilType();
+        echo $this->pencilInterface->getPencilType();
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        // $pencil = $objectManager->create('SimplifiedMagento\FirstModule\Model\Pencil');
-        // var_dump($pencil);
-        // $book = $objectManager->create('SimplifiedMagento\FirstModule\Model\Book');
-        // echo $book->getBookType();
-        // var_dump($book);
+        $pencil = $objectManager->create('SimplifiedMagento\FirstModule\Model\Pencil');
+        var_dump($pencil);
+        $book = $objectManager->create('SimplifiedMagento\FirstModule\Model\Book');
+        echo $book->getBookType();
+        var_dump($book);
         $student = $objectManager->create('SimplifiedMagento\FirstModule\Model\Student');
         var_dump($student);
     }
