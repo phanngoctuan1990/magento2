@@ -1,6 +1,6 @@
 <?php
 
-namespace SimplifiedMagento\FirstModule\NotMagento;
+namespace SimplifiedMagento\FirstModule\Api;
 
 interface PencilInterface
 {
