@@ -9,20 +9,30 @@ use SimplifiedMagento\FirstModule\Api\PencilInterface;
 class Pencil implements PencilInterface
 {
     protected $size;
+    protected $name;
     protected $color;
+    protected $school;
 
     /**
      * Pencil construct
      * 
-     * @param Color $color color
-     * @param Size  $size  size
+     * @param Size   $size   size
+     * @param Color  $color  color
+     * @param String $name   name
+     * @param String $school school
      * 
      * @return void
      */
-    public function __construct(Color $color, Size $size)
-    {
+    public function __construct(
+        Size $size,
+        Color $color,
+        String $name = '',
+        String $school = ''
+    ) {
         $this->size = $size;
+        $this->name = $name;
         $this->color = $color;
+        $this->school = $school;
     }
 
     /**
