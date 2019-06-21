@@ -6,9 +6,11 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use SimplifiedMagento\FirstModule\Api\PencilInterface;
+use SimplifiedMagento\FirstModule\Model\PencilFactory;
 
 class HelloWorld extends Action
 {
+    protected $pencilFactory;
     protected $pencilInterface;
     protected $productRepository;
 
@@ -16,6 +18,7 @@ class HelloWorld extends Action
      * HelloWorld construct
      * 
      * @param Context                    $context           context
+     * @param PencilFactory              $pencilFactory     pencilFactory
      * @param PencilInterface            $pencilInterface   pencilInterface
      * @param ProductRepositoryInterface $productRepository productRepository
      * 
@@ -23,10 +26,12 @@ class HelloWorld extends Action
      */
     public function __construct(
         Context $context,
+        PencilFactory $pencilFactory,
         PencilInterface $pencilInterface,
         ProductRepositoryInterface $productRepository
     ) {
         parent::__construct($context);
+        $this->pencilFactory = $pencilFactory;
         $this->pencilInterface = $pencilInterface;
         $this->productRepository = $productRepository;
     }
@@ -51,5 +56,7 @@ class HelloWorld extends Action
         var_dump($book);
         $student = $objectManager->create('SimplifiedMagento\FirstModule\Model\Student');
         var_dump($student);
+        $pencil = $this->pencilFactory->create(['name' => 'Bob', 'school' => 'Bach khoa Da Nang']);
+        var_dump($pencil);
     }
 }
