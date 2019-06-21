@@ -5,6 +5,7 @@ namespace SimplifiedMagento\FirstModule\Controller\Page;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Catalog\Model\ProductFactory;
+use Magento\Framework\Event\ManagerInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use SimplifiedMagento\FirstModule\Api\PencilInterface;
 use SimplifiedMagento\FirstModule\Model\PencilFactory;
@@ -12,6 +13,7 @@ use SimplifiedMagento\FirstModule\Model\PencilFactory;
 class HelloWorld extends Action
 {
     protected $pencilFactory;
+    protected $_eventManager;
     protected $productFactory;
     protected $pencilInterface;
     protected $productRepository;
@@ -22,6 +24,7 @@ class HelloWorld extends Action
      * @param Context                    $context           context
      * @param PencilFactory              $pencilFactory     pencilFactory
      * @param ProductFactory             $productFactory    productFactory
+     * @param ManagerInterface           $_eventManager     _eventManager
      * @param PencilInterface            $pencilInterface   pencilInterface
      * @param ProductRepositoryInterface $productRepository productRepository
      * 
@@ -31,11 +34,13 @@ class HelloWorld extends Action
         Context $context,
         PencilFactory $pencilFactory,
         ProductFactory $productFactory,
+        ManagerInterface $_eventManager,
         PencilInterface $pencilInterface,
         ProductRepositoryInterface $productRepository
     ) {
         parent::__construct($context);
         $this->pencilFactory = $pencilFactory;
+        $this->_eventManager = $_eventManager;
         $this->productFactory = $productFactory;
         $this->pencilInterface = $pencilInterface;
         $this->productRepository = $productRepository;
@@ -70,5 +75,8 @@ class HelloWorld extends Action
         $id = $product->getIdBySku('MH02-XL-Red');
         echo $id . "</br>";
         echo "Main function" . "</br>";
+        $message = new \Magento\Framework\DataObject(['greeting' => 'Good morning']);
+        $this->_eventManager->dispatch('custom_event', ['greeting' => $message]);
+        echo $message->getGreeting() . "</br>";
     }
 }
