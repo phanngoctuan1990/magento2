@@ -21,6 +21,9 @@
         <plugin name="plugin-on-execute-3"
                 type="SimplifiedMagento\FirstModule\Plugin\PluginSolution3"
                 sortOrder="30" disabled="true" />
+        <arguments>
+            <argument name="heavyService" xsi:type="object">SimplifiedMagento\FirstModule\Model\HeavyService\Proxy</argument>
+        </arguments>
     </type>
 
     <type name="Magento\Catalog\Model\Product">
