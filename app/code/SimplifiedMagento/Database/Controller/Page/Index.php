@@ -43,5 +43,14 @@ class Index extends Action
         ]);
         $affiliateMember->save();
         $member->delete();
+        
+        $collection = $affiliateMember->getCollection()
+            ->addFieldToSelect(['name', 'status'])
+            ->addFieldToFilter('name', ['eq' => 'Alex'])
+            ->addFieldToFilter('status', ['neq' => true]);
+        foreach ($collection as $item) {
+            print_r($item->getData());
+            echo '</br>';
+        }
     }
 }
